@@ -1,0 +1,29 @@
+﻿@model IEnumerable<tuan4.Models.Todo>
+
+<h2>DANH SÁCH CÔNG VIỆC</h2>
+<a asp-action="Create" asp-controller="Todo">Tạo mới công việc</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã công việc</th>
+            <th>Tên công việc</th>
+            <th>Trạng thái hoàn thành</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.TaskName</td>
+                <td><input type="checkbox" checked="@item.IsCompleted" disabled /></td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Sửa</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="text-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

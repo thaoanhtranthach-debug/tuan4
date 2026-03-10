@@ -1,0 +1,39 @@
+﻿@model tuan4.Models.Todo
+@{
+    ViewData["Title"] = "Thêm mới công việc";
+}
+
+<h2>BÀI TẬP VẬN DỤNG 2</h2>
+<p>Xây dựng ứng dụng TodoList với các chức năng: Xem danh sách, chi tiết, thêm, sửa, xoá</p>
+
+<hr />
+<h3>Thêm mới công việc</h3>
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label>Mã công việc</label>
+        <input asp-for="Id" class="form-control" readonly />
+        <span asp-validation-for="Id" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Tên công việc</label>
+        <input asp-for="TaskName" class="form-control" />
+        <span asp-validation-for="TaskName" class="text-danger"></span>
+    </div>
+
+    <div class="form-check">
+        <input asp-for="IsCompleted" class="form-check-input" />
+        <label class="form-check-label">Đã hoàn thành</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Tạo mới</button>
+</form>
+<br />
+<a href="/Todo/Index">Quay trở lại</a>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
